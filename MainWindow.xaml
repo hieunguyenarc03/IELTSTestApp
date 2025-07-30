@@ -7,8 +7,119 @@
         mc:Ignorable="d"
         Title="IELTS Test App"
         Height="600"
-        Width="900">
+        Width="900"
+        KeyDown="WindowKeyDown"
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource ForegroundBrush}">
 
-    <Grid Margin="10">
-    </Grid>
+        <Grid Margin="10">
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <!-- Header Controls -->
+                        <RowDefinition Height="*"/>
+                        <!-- Typing Area -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Footer -->
+                </Grid.RowDefinitions>
+
+                <!-- ===== Header Controls ===== -->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,0,10">
+                        <Button Name="BtnToggleTheme"
+                                Content="Dark/Light Mode"
+                                Click="ToggleThemeClick"
+                                Width="100"
+                                Margin="0,0,10,0"/>
+                        <Button Name="BtnFullscreen"
+                                Click="ToggleFullscreenClick"
+                                Content="⛶ Fullscreen"
+                                Width="100"/>
+                </StackPanel>
+
+                <!-- ===== Typing Area ===== -->
+                <TextBox Name="TypingBox"
+                         Background="{DynamicResource BackgroundBrush}"
+                         Foreground="{DynamicResource ForegroundBrush}"
+                         Grid.Row="1"
+                         FontSize="16"
+                         AcceptsReturn="True"
+                         AcceptsTab="True"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         SpellCheck.IsEnabled="False"
+                         AutoWordSelection="False"
+                         InputScope="Default"
+                         ContextMenu="{x:Null}"
+                         Padding="10"
+                         VerticalAlignment="Stretch"
+                         HorizontalAlignment="Stretch"
+                         TextChanged="TypingBoxTextChanged"/>
+
+                <!-- ===== Footer ===== -->
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Margin="0,10,0,0">
+                        <TextBlock Text="Word Count: "
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"/>
+                        <TextBlock Name="WordCountLabel"
+                                   Text="0"
+                                   Margin="5,0"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBlock Text=" | Font Size: "
+                                   Margin="10,0"
+                                   VerticalAlignment="Center"/>
+                        <Slider Name="FontSizeSlider"
+                                Minimum="10"
+                                Maximum="30"
+                                Value="16"
+                                Width="100"
+                                Margin="5,0"/>
+                        <TextBlock Name="FontSizeLabel"
+                                   Text="16"
+                                   Margin="10,0,0,0"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBlock Text=" | Timer: "
+                                   Margin="10,0"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Name="TimerLabel"
+                                   Text="60:00"
+                                   VerticalAlignment="Center"
+                                   Margin="5,0"/>
+                        <Button Name="BtnStartTimer"
+                                Content="▶ Start"
+                                Click="StartButtonClick"
+                                Width="70"
+                                Margin="5,0"/>
+                        <Button Name="BtnResetTimer"
+                                Content="⟳ Reset"
+                                Click="ResetButtonClick"
+                                Width="70"
+                                Margin="5,0"/>
+
+                        <!-- <TextBlock Text="Time Left:"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,10,0"/>
+                        <TextBlock Name="TimerLabel"
+                                   Text="60:00"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"/>
+
+                        <Button Content="Start"
+                                Name="StartButton"
+                                Click="StartButton_Click"
+                                Margin="20,0,0,0"/>
+                        <Button Content="Reset"
+                                Name="ResetButton"
+                                Click="ResetButton_Click"
+                                Margin="10,0,0,0"/> -->
+
+                </StackPanel>
+        </Grid>
+
 </Window>

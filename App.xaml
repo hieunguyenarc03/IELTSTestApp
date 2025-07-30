@@ -4,6 +4,21 @@
              xmlns:local="clr-namespace:IELTSTestApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Application-level resources go here -->
+        <ResourceDictionary>
+            <!-- Light Mode -->
+            <Color x:Key="LightBackgroundColor">#FFFFFFFF</Color>
+            <Color x:Key="LightForegroundColor">#FF000000</Color>
+
+            <!-- Dark Mode -->
+            <Color x:Key="DarkBackgroundColor">#FF1E1E1E</Color>
+            <Color x:Key="DarkForegroundColor">#FFFFFFFF</Color>
+
+            <!-- Default -->
+            <SolidColorBrush x:Key="BackgroundBrush"
+                    Color="{StaticResource LightBackgroundColor}"/>
+            <SolidColorBrush x:Key="ForegroundBrush"
+                    Color="{StaticResource LightForegroundColor}"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
