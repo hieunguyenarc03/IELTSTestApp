@@ -47,6 +47,8 @@ This application aims to replicate the **IELTS Academic Writing module** in term
 
 ## Installation & Usage
 
+### Installation
+
 If no modification is intended to made, you can install the app directly from [*Releases*](https://github.com/hieunguyenarc03/IELTSTestApp/releases) on github.
 
 This is a standalone Windows application. If you modify the source code, you shall build the source again to generate program, at this point dotnet is required. Once built, you can run the `.exe` directly — no installation required.
@@ -56,6 +58,12 @@ This Bash command builds and publishes a self-contained, single-file .NET applic
 ```bash
 dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
 ```
+
+### Usage
+
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/a6c14708-bd3c-4958-a988-19b2a93462d8" />
+*App Screenshot*
+
 ---
 
 ## Future Vision
