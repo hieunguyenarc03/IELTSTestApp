@@ -10,4 +10,3 @@ namespace IELTSTestApp;
 public partial class App : Application
 {
 }
-
