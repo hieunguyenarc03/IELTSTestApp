@@ -100,25 +100,6 @@
                                 Click="ResetButtonClick"
                                 Width="70"
                                 Margin="5,0"/>
-
-                        <!-- <TextBlock Text="Time Left:"
-                                   VerticalAlignment="Center"
-                                   Margin="0,0,10,0"/>
-                        <TextBlock Name="TimerLabel"
-                                   Text="60:00"
-                                   FontSize="16"
-                                   FontWeight="Bold"
-                                   VerticalAlignment="Center"/>
-
-                        <Button Content="Start"
-                                Name="StartButton"
-                                Click="StartButton_Click"
-                                Margin="20,0,0,0"/>
-                        <Button Content="Reset"
-                                Name="ResetButton"
-                                Click="ResetButton_Click"
-                                Margin="10,0,0,0"/> -->
-
                 </StackPanel>
         </Grid>
 

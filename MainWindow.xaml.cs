@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -32,6 +33,17 @@ public partial class MainWindow : Window
     // Theme toggle related fields
     private bool isDarkMode = false;
 
+    // Auto-save timer
+    private DispatcherTimer autoSaveTimer;
+
+
+    // Cache file path
+    private readonly string cacheFilePath = System.IO.Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        "IELTSTestApp",
+        "cache.txt"
+    );
+
     public MainWindow()
     {
         InitializeComponent();
@@ -39,6 +51,40 @@ public partial class MainWindow : Window
         TypingBox.TextChanged += TypingBoxTextChanged;
 
         FontSizeSlider.ValueChanged += FontSizeSliderValueChanged;
+
+        // Restore cached content if available
+        if (File.Exists(cacheFilePath))
+        {
+            try
+            {
+                TypingBox.Text = File.ReadAllText(cacheFilePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Failed to read cache: " + ex.Message);
+            }
+        }
+
+        // Auto-save timer
+        autoSaveTimer = new DispatcherTimer();
+        autoSaveTimer.Interval = TimeSpan.FromSeconds(10);
+        autoSaveTimer.Tick += (s, e) => SaveCache();
+        autoSaveTimer.Start();
+    }
+
+    // Cache loading and saving
+    private void SaveCache()
+    {
+        try
+        {
+            System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(cacheFilePath) ?? "");
+            System.IO.File.WriteAllText(cacheFilePath, TypingBox.Text);
+        }
+        catch (Exception ex)
+        {
+            // Handle errors silently or log them
+            Console.WriteLine("Failed to save cache: " + ex.Message);
+        }
     }
 
     // Count words in the TextBox
@@ -73,11 +119,11 @@ public partial class MainWindow : Window
         // Update the label
         FontSizeLabel.Text = fontSize.ToString();
     }
-    
+
     // Check if the text contains Vietnamese characters
     private bool ContainsVietnameseChars(string text)
     {
-        // Danh sách các ký tự tiếng Việt có dấu
+        // List of Vietnamese characters
         string vietnameseChars = "ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ" +
                                   "ĂÂĐÊÔƠƯÁÀẢÃẠẤẦẨẪẬẮẰẲẴẶÉÈẺẼẸẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌỐỒỔỖỘỚỜỞỠỢÚÙỦŨỤỨỪỬỮỰÝỲỶỸỴ";
 
@@ -213,7 +259,4 @@ public partial class MainWindow : Window
             isDarkMode = false;
         }
     }
-
-    // Check if the text contains Vietnamese characters
-
 }

@@ -12,23 +12,25 @@ This application aims to replicate the **IELTS Academic Writing module** in term
 
 ### Implemented
 
-- English-only input support  
+- **English-only** input support  
 - Real-time **word count** display  
 - Adjustable **font size** with a slider  
 - Built-in **countdown timer** with reset  
 - **Fullscreen mode** to eliminate distractions  
 - **Dark / Light mode** toggle for comfort  
-- Block **copy, paste, and text selection**  
 - Disable **text suggestions, autocorrect, spellcheck, predictive input**  
 - Block **Vietnamese input** from common IMEs  
+- **Auto-save** writing every 10 seconds
 
 ### Planned Features
 
-- Topic selector for Writing Task 1 and Task 2  
-- Auto-save writing drafts  
-- Export responses to `.txt` file  
-- Track writing history and session performance  
-- Print directly from the app  
+- Block **copy, paste, and text selection**  
+- **Topic selector** and **typing box** for Writing Task 1 and Task 2 separately
+- **Export**  responses to `.txt` file  
+- **Track writing** history and session performance  
+- **Print** directly from the app
+- **AI** intergrated to assess the writing
+- Intergrate mechanism **blocking switching app** during session
 
 ---
 
@@ -45,14 +47,15 @@ This application aims to replicate the **IELTS Academic Writing module** in term
 
 ## Installation & Usage
 
-This is a standalone Windows application. Once built, you can run the `.exe` directly — no installation required.
+If no modification is intended to made, you can install the app directly from [*Releases*](https://github.com/hieunguyenarc03/IELTSTestApp/releases) on github.
+
+This is a standalone Windows application. If you modify the source code, you shall build the source again to generate program, at this point dotnet is required. Once built, you can run the `.exe` directly — no installation required.
+
+This Bash command builds and publishes a self-contained, single-file .NET application for Windows 64-bit
 
 ```bash
 dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
 ```
-
-> A proper installer package (.msi/.exe) and portable version will be provided in future releases.
-
 ---
 
 ## Future Vision
